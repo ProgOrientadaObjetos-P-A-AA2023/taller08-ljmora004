@@ -24,10 +24,12 @@ public class Ejecutor {
 
             switch (opcion) {
                 case 1:
-                    ingresoDN();
+                    String[] data = ingresoNombre();
+                    ingresoDN(data);
                     break;
                 case 2:
-                    ingresoDF();
+                    String[] data2 = ingresoNombre();
+                    ingresoDF(data2);
                     break;
                 case 3:
                     bandera = false;
@@ -38,7 +40,7 @@ public class Ejecutor {
         }
     }
 
-    public static String ingresoNombre() {
+    public static String[] ingresoNombre() {
         Scanner ent = new Scanner(System.in);
         
         String nombre;
@@ -49,25 +51,22 @@ public class Ejecutor {
         System.out.print("Ingrese la cedula: ");
         cedula = ent.nextLine();
         
+        String[] data = {nombre, cedula};
         
-
+        return data;
     }
 
-    public static void ingresoDN() {
+    public static void ingresoDN(String[] data) {
         Scanner ent = new Scanner(System.in);
         ent.useLocale(Locale.US);
 
-        String nombre;
-        String cedula;
+        String nombre = data[0];
+        String cedula = data[1];
         double valorSueldo;
         double valorHoraExtra;
         int numeroHorasExtra;
         double sueldo;
 
-        System.out.print("Ingrese el nombre: ");
-        nombre = ent.nextLine();
-        System.out.print("Ingrese la cedula: ");
-        cedula = ent.nextLine();
         System.out.print("Ingrese el valor del sueldo: ");
         valorSueldo = ent.nextDouble();
         System.out.print("Ingrese el valor de las horas extras: ");
@@ -86,19 +85,15 @@ public class Ejecutor {
         System.out.println(docente);
     }
 
-    public static void ingresoDF() {
+    public static void ingresoDF(String[] data) {
         Scanner ent = new Scanner(System.in);
         ent.useLocale(Locale.US);
 
-        String nombre;
-        String cedula;
+        String nombre = data[0];
+        String cedula = data[1];
         double valorFactura;
         double valorIva;
 
-        System.out.print("Ingrese el nombre: ");
-        nombre = ent.nextLine();
-        System.out.print("Ingrese la cedula: ");
-        cedula = ent.nextLine();
         System.out.print("Ingrese el valor de la factura: ");
         valorFactura = ent.nextDouble();
         System.out.print("Ingrese el porcentaje del IVA: ");
